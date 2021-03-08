@@ -2,7 +2,7 @@ GC_total = [] #creates list of Gs and Cs per index
 def GC_content(dna_list):
     for index in range(len(dna_list)): #for each index in dna_list
         list_component = dna_list[index] 
-        GC_total.append(list_component.count('C') + list_component.count('G'))
+        GC_total.append(list_component.count('C') + list_component.count('G')) #adds total of Gs and Cs to list
     max_GC = max(GC_total) 
     max_location = GC_total.index(max_GC) #finds the index where max_GC occurs
     length = len(dna_list[max_location])
