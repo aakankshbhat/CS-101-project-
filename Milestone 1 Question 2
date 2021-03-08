@@ -1,14 +1,4 @@
 def dna2rna(dna):
-    rna = '' #rna is a string
-    dna = dna.upper() #make uppercase
-    for symbol in dna:
-        if symbol == 'T': #only changing T to U; keep everything else the same
-            rna = rna + 'U'
-        elif symbol == 'G':
-            rna = rna +'G'
-        elif symbol == 'A':
-            rna = rna + 'A'
-        elif symbol == 'C':
-            rna = rna + 'C'
+    dna = dna.upper() #make dna strign uppercase
+    rna = dna.replace('T', 'U') #replacing T with U in dna to get rna
     return rna 
-        
