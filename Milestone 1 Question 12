@@ -1,0 +1,19 @@
+def splice (dna, intron_list):
+    #transcribe from dna to rna
+    rna= dna2rna(dna)
+    codons=''
+
+    
+
+    #we will try for each intron if it is present then we will try to remove that particular string
+    
+    for strands in intron_list:
+        #remove until all the strands are removed 
+        while strands in rna:
+            rna= rna.replace (strands,"")
+            
+    codons= rna2codon(rna)
+    
+    return codons
+
+    print (splice("ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG",["ATCGGTCGAA","ATCGGTCGAGCGTGT
