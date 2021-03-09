@@ -1,0 +1,37 @@
+def fact(n):
+        res = 1;
+
+        for i in range(2, n+1):
+                res = res*i
+        return res
+
+
+def comb(n, k):
+        return (fact(n)/(fact(n-k)*fact(k)))
+
+
+
+def mendels_law(hom, het, rec):
+        """
+                According to Mendel's Law
+                Probability of Dominant(Hom, Hom) = 1;
+                Probability of Dominant(Hom, Het) = 1;
+                Probability of Dominant(Hom, Rec) = 1;
+                Probability of Dominant(Het, Het) = 0.75;
+                Probability of Dominant(Het, Rec) = 0.5;
+                Probability of Dominant(Rec, Rec) = 0;
+                
+                Now Probability that off spring of two randomly
+                selected allele will be dominant is
+                (1*comb(hom, 2) + 1*(comb(hom, 1)*comb(het, 1)) + 1*(comb(hom, 1)*comb(rec, 1)) 
+                + 0.75*(comb(het, 2)) + 0.5*(comb(rec, 1)*comb(het, 1)) + 0*comb(rec, 2))/ comb(hom+het+rec, 2)
+                = 
+        """
+        probability = 1*float(comb(hom, 2)) + 1*float(hom*het) + 1*float(hom*rec) + 0.75*float(comb(het, 2)) + 0.5*float(het*rec)
+
+
+        probability = probability/float(comb(het+hom+rec, 2))
+
+        return probability
+
+print(mendels_law(2, 2, 2))
