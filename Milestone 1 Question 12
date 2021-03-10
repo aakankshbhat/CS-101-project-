@@ -2,6 +2,7 @@ def splice_rna (dna, intron_list):
     #transcribe from dna to rna
     rna= dna2rna(dna)
     codons=''
+    rna1=''
 
     
 
@@ -10,10 +11,8 @@ def splice_rna (dna, intron_list):
     for strands in intron_list:
         #remove until all the strands are removed 
         while strands in rna:
-            rna= rna.replace (strands,"")
+            rna1= rna.replace (strands,"")
             
-    codons= rna2codon(rna)
-    
-    return codons
+    return rna1
 
     print (splice_rna ("ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG",["ATCGGTCGAA","ATCGGTCGAGCGTGT"]))
