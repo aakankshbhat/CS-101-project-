@@ -12,7 +12,7 @@ def dna_count(dna):
         elif letter == "G":
             count_G = count_G + 1
         elif letter == "T":
-            count_T == count_T + 1
+            count_T = count_T + 1
         else:
             print("Invalid input")
     return (count_A, count_C, count_G, count_T)
@@ -78,7 +78,13 @@ def mendels_law(hom, het, rec):
 
 print(mendels_law(2, 2, 2))
 
-????????? question 5
+def fibonacci_rabits(n, k):
+    if n == 1:
+        return 1 #Base case 1
+    if n == 2:
+        return 1 #Base case 2
+    else: 
+        return (fibonacci_rabits(n-1, k) + 3*fibonacci_rabits(n-2, k))
 
 GC_total = [] #creates list of Gs and Cs per index
 def GC_content(dna_list):
@@ -124,15 +130,16 @@ def locate_substring(dna_snippet,dna):
     return indexes
 print(locate_substring("GATATATGCATATACTT","ATAT"))
 
-def hamming_distance(dna1, dna2):
-    dna1 = dna1.upper
-    dna2 = dna2.upper
+hamming_distance(dna1, dna2):
+    dna1 = str(dna1) #Convert both dna to string
+    dna2 = str(dna2)
     distance = 0
-    for i in range(len(dna1)):
+    length = len(dna1)
+    for i in range(length):
         if dna1[i] == dna2[i]:
             continue
         else:
-            distance = distance + 1
+            distance = distance + 1 #Adding non-corresponding differences
     return distance
  
 prob = 0
