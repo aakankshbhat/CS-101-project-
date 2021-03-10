@@ -1,4 +1,4 @@
-def splice (dna, intron_list):
+def splice_rna (dna, intron_list):
     #transcribe from dna to rna
     rna= dna2rna(dna)
     codons=''
@@ -16,4 +16,4 @@ def splice (dna, intron_list):
     
     return codons
 
-    print (splice("ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG",["ATCGGTCGAA","ATCGGTCGAGCGTGT"]))
+    print (splice_rna ("ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG",["ATCGGTCGAA","ATCGGTCGAGCGTGT"]))
