@@ -1,18 +1,15 @@
 def splice_rna (dna, intron_list):
     #transcribe from dna to rna
-    rna= dna2rna(dna)
+    exons= dna #exons will be the remaining segments of dna
     codons=''
-    rna1=''
 
     
 
     #we will try for each intron if it is present then we will try to remove that particular string
     
-    for strands in intron_list:
-        #remove until all the strands are removed 
-        while strands in rna:
-            rna1= rna.replace (strands,"")
-            
-    return rna1
-
-    print (splice_rna ("ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG",["ATCGGTCGAA","ATCGGTCGAGCGTGT"]))
+    for i in range(0,len(intron_list)):
+        #remove until all the strands are removed
+            exons= exons.replace (intron_list[i],"") #removes segments of dna in intron_list
+    rna = dna2rna(exons)     #transcribes to rna
+    codons= rna2codon(rna) # transcribes rna to proteins
+    return codons
