@@ -79,13 +79,13 @@ def mendels_law(hom, het, rec):
 
 print(mendels_law(2, 2, 2))
 
-def fibonacci_rabits(n, k):
+def fibbonacci_rabits(n, k):
     if n == 1:
         return 1 #Base case 1
     if n == 2:
         return 1 #Base case 2
     else: 
-        return (fibonacci_rabits(n-1, k) + 3*fibonacci_rabits(n-2, k))
+        return (fibbonacci_rabits(n-1, k) + 3*fibbonacci_rabits(n-2, k))
 
 GC_total = [] #creates list of Gs and Cs per index
 def GC_content(dna_list):
@@ -131,7 +131,7 @@ def locate_substring(dna_snippet,dna):
     return indexes
 print(locate_substring("GATATATGCATATACTT","ATAT"))
 
-def hamming_distance(dna1, dna2):
+def hamming_dist(dna1, dna2):
     dna1 = str(dna1) #Convert both dna to string
     dna2 = str(dna2)
     distance = 0
