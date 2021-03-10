@@ -131,7 +131,7 @@ def locate_substring(dna_snippet,dna):
     return indexes
 print(locate_substring("GATATATGCATATACTT","ATAT"))
 
-hamming_distance(dna1, dna2):
+def hamming_distance(dna1, dna2):
     dna1 = str(dna1) #Convert both dna to string
     dna2 = str(dna2)
     distance = 0
