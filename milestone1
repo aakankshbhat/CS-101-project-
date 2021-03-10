@@ -3,7 +3,7 @@ def dna_count(dna):
     count_C = 0
     count_G = 0
     count_T = 0
-    dna = dna_upper
+    dna = dna.upper()
     for letter in dna:
         if letter == "A":
             count_A = count_A + 1
@@ -15,7 +15,8 @@ def dna_count(dna):
             count_T = count_T + 1
         else:
             print("Invalid input")
-    return (count_A, count_C, count_G, count_T)
+    dna_dict= {'A':count_A, 'C':count_C, 'G':count_G, 'T':count_T}
+    return dna_dict
 
 def dna2rna(dna):
     dna = dna.upper() #make dna strign uppercase
