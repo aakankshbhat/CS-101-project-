@@ -87,16 +87,17 @@ def fibonacci_rabbits(n, k):
     else: 
         return (fibonacci_rabbits(n-1, k) + 3*fibonacci_rabbits(n-2, k))
 
-GC_total = [] #creates list of Gs and Cs per index
 def GC_content(dna_list):
+    GC_percent = [] #creates list of Gs and Cs per index
     for index in range(len(dna_list)): #for each index in dna_list
-        list_component = dna_list[index] 
-        GC_total.append(list_component.count('C') + list_component.count('G')) #adds total of Gs and Cs to list
-    max_GC = max(GC_total) 
-    max_location = GC_total.index(max_GC) #finds the index where max_GC occurs
-    length = len(dna_list[max_location])
-    GC_fraction = float(((max_GC)/length)*100) #calculates percentage of Gs and Cs
-    return (max_location, GC_fraction) #returns index and percentage
+        C = dna_list[index].count('C')
+        G = dna_list[index].count('G')
+        GC_total= C+G
+        GC_fraction = (GC_total/len(dna_list[index]))*100
+        GC_percent.append(GC_fraction) #adds percentages to list GC_percent
+    max_GC = max(GC_percent)
+    max_index = GC_percent.index(max_GC)
+    return (max_index, max_GC)
 
 #turning an RNA sequence into an amino acid string
 genetic_code = {
