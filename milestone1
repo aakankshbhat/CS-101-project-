@@ -122,12 +122,13 @@ def rna2codon(rna):
     for i in range(0, num_of_codon):
         triplet = rna[3*i:3*i+3] #takes every 3 letters of rna string
         if triplet == '*':
+            amino_str += amino_str.replace('*','')
             return amino_str
+            break
         elif triplet not in genetic_code:
             return 'Invalid'
         else:
             amino_str += rna_codon(triplet) #adds amino acid to empty string
-        continue
     return amino_str
 
 def locate_substring(dna_snippet,dna):
