@@ -113,7 +113,7 @@ genetic_code = {
 
 #function that turns 3 letter codon to amino acid letter using gentic code dict
 def rna_codon(triplet):
-    return genetic.code.get(triplet)
+    return genetic_code.get(triplet, 'Invalid')
 
 #function that turns rna to amino acid string
 def rna2codon(rna):
@@ -121,12 +121,8 @@ def rna2codon(rna):
     num_of_codon = int(len(rna)/3) #number of 3 letter codons
     for i in range(0, num_of_codon):
         triplet = rna[3*i:3*i+3] #takes every 3 letters of rna string
-        if triplet == '*':
-            amino_str += amino_str.replace('*','')
-            return amino_str
-            break
-        elif triplet not in genetic_code:
-            return 'Invalid'
+        if rna_codon(triplet) == '*':
+            return amino_str #if it's a stop codon, the loop stops at the stop codon
         else:
             amino_str += rna_codon(triplet) #adds amino acid to empty string
     return amino_str
