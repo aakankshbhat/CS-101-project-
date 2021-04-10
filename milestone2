@@ -1,1 +1,41 @@
 
+
+
+#the reverse_complement function is the same code from milestone 1
+#finding the complement string of a given DNA string
+def reverse_complement(dna):
+    #reverse dna string
+    dna_reverse = dna[::-1]
+    dna_complement = ''
+    #each letter in the reverse string is replaced with complement letter
+    #all is added to a new string (dna_complement)
+    for symbol in dna_reverse:
+        if symbol == 'A':
+            dna_complement += 'T'
+        elif symbol == 'T':
+            dna_complement += 'A'
+        elif symbol == 'C':
+            dna_complement += 'G'
+        else:
+            dna_complement += 'C'
+    return dna_complement
+
+#finds out if a sub-string in DNA is a reverse palindrome
+def rev_palindrome(dna):
+    palindromes= []
+    for n in range(len(dna)): #the starting position must be within the DNA string
+        for i in range(4,13): #the length of the tuple must be between 4 and 12
+            #a starting position of 3 before the end of the string cannot produce tuple with minimum of 4 letters
+            if n == (len(dna)-3):
+                break
+            #the starting position plus the length of the sub-string cannot be longer than the entire length of the DNA string
+            if (n+i) > len(dna):
+                break
+            dna_pal= dna[n:(n+i)] #DNA substring
+            rev_comp_pal= reverse_complement(dna_pal) #reverse complement to DNA substring
+            #if both the DNA substring and reverse complement are the same, then they are reverse palindromes
+            if dna_pal == rev_comp_pal:
+                position= n
+                length= i
+                palindromes.append((position,length))
+    return palindromes
