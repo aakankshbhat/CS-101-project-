@@ -33,7 +33,7 @@ def rev_palindrome(dna):
                 break
             dna_pal= dna[n:(n+i)] #DNA substring
             rev_comp_pal= reverse_complement(dna_pal) #reverse complement to DNA substring
-            #if both the DNA substring and reverse complement are the same, then they are reverse palindromes
+            #if both the DNA substring and reverse complement are the same, they are reverse palindromes
             if dna_pal == rev_comp_pal:
                 position= n
                 length= i
