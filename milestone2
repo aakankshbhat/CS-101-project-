@@ -1,4 +1,43 @@
 
+import math
+
+def perfect_match(rna): 
+    number_C = rna.count("C")
+    number_G = rna.count("G")
+    number_U = rna.count("U")
+    number_A = rna.count("A")
+    if number_C == number_G: #below if statements find the number of GC and UA pairs
+        matches_GC = number_C
+    if number_C != number_G:
+        matches_GC = 0
+    if number_U == number_A: 
+        matches_UA = number_U
+    if number_C != number_G:
+        matches_UA = 0
+    if matches_GC and matches_UA != 0:
+        number_matches =  (math.factorial(matches_UA)*math.factorial(matches_GC)) 
+    else:   #can't use factorial since 0! is equal to one
+        number_matches = 0
+    return number_matches
+        
+    #number of perfect matches is equal to matches_UA! * matches_GC!
+    
+def shared_motif(dna_list):
+        motif = '' #will add common letters as they are found
+        dna_string = dna_list[0]
+        dnastring_len = len(dna_list[0])+1
+        for i in range (dnastring_len): #shared motif will be shorter than shortest list element
+            for k in range((dnastring_len)-(i+1)): #new range taking into account already tested indices
+                string = dna_string[i:i+k] # k = change in index value from start to end of shared motif
+                if all(string in index for index in dna_list) == True: #all function returns true if in string in all indices
+                    if k > len(motif): 
+                        motif = string 
+                        if all(string in index for index in dna_list) == False: #case with no common substrings
+                            motif = ""
+        return motif
+        
+#inspiration from dynamic programming on wikipedia and algorithms.tutorialhorizon
+
 
 
 #the reverse_complement function is the same code from milestone 1
