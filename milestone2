@@ -22,22 +22,6 @@ def perfect_match(rna):
         
     #number of perfect matches is equal to matches_UA! * matches_GC!
     
-def shared_motif(dna_list):
-        motif = '' #will add common letters as they are found
-        dna_string = dna_list[0]
-        dnastring_len = len(dna_list[0])+1
-        for i in range (dnastring_len): #shared motif will be shorter than shortest list element
-            for k in range((dnastring_len)-(i+1)): #new range taking into account already tested indices
-                string = dna_string[i:i+k] # k = change in index value from start to end of shared motif
-                if all(string in index for index in dna_list) == True: #all function returns true if in string in all indices
-                    if k > len(motif): 
-                        motif = string 
-                        if all(string in index for index in dna_list) == False: #case with no common substrings
-                            motif = ""
-        return motif
-        
-#inspiration from dynamic programming on wikipedia and algorithms.tutorialhorizon
-
 
 
 #the reverse_complement function is the same code from milestone 1
