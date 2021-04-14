@@ -1,15 +1,16 @@
 def shared_motif(dna_list):
         motif = '' #will add common letters as they are found
-        dna_string = dna_list[0] #dna_list will always have at least one string
-        dnastring_len = len(dna_list[0])+1 #add one for inclusivity purposes
+        shortest_string = min(dna_list, key=len) #dna_list will always have at least one string
+        dnastring_len = len(shortest_string)+1 #add one for inclusivity purposes
         for i in range(dnastring_len): 
-            for k in range((dnastring_len)-(i+1)): #new range taking into account already tested indices
-                string = dna_string[i:i+k] # k = change in index value from start to end of shared motif
-                if all(string in index for index in dna_list) == True: #all function returns true if in string in all indices
-                    if k > len(motif): #can't be zero
-                        motif = string
-                        if all(string in index for index in dna_list) == False: #case with no common substrings
-                            motif = ""
+            for k in range((dnastring_len+1)-(i+1)): #new range taking into account already tested indices
+                string = shortest_string[i:i+k] # k = change in index value from start to end of shared motif
+                for index in dna_list:
+                    if all(string in index for index in dna_list) == True: #all function returns true if in string in all indices
+                        if k > len(motif): #can't be zero
+                            motif = string
+                            if all(string in index for index in dna_list) == False: #case with no common substrings
+                                motif = ""
         return motif
 
 #inspiration from dynamic programming on wikipedia and algorithms.tutorialhorizon
