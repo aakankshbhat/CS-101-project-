@@ -118,9 +118,9 @@ def perfect_match(rna):
         
     #number of perfect matches is equal to matches_UA! * matches_GC!
    
- dna=""
- gc_content=[]
- def random_genome(dna, gc_content):
+dna=""
+gc_content=[]
+def random_genome(dna, gc_content):
     dna = dna.upper()
     cg = len(dna.replace('A', '').replace('T', ''))
     at = len(dna.replace('C', '').replace('G', ''))
@@ -156,14 +156,14 @@ def rev_palindrome(dna):
     palindromes= []
     for n in range(len(dna)): #the starting position must be within the DNA string
         for i in range(4,13): #the length of the tuple must be between 4 and 12
+            dna_pal= dna[n:(n+i)] #DNA substring
+            rev_comp_pal= reverse_complement(dna_pal) #reverse complement to DNA substring
             #a starting position of 3 before the end of the string cannot produce tuple with minimum of 4 letters
             if n == (len(dna)-3):
                 break
             #the starting position plus the length of the sub-string cannot be longer than the entire length of the DNA string
             if (n+i) > len(dna):
                 break
-            dna_pal= dna[n:(n+i)] #DNA substring
-            rev_comp_pal= reverse_complement(dna_pal) #reverse complement to DNA substring
             #if both the DNA substring and reverse complement are the same, they are reverse palindromes
             if dna_pal == rev_comp_pal:
                 position= n
