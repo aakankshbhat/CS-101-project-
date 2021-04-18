@@ -17,7 +17,7 @@ def shared_motif(dna_list):
 
 #inspiration from https://www.programiz.com/python-programming/methods/built-in/all
 
-dict=[]
+dict={}
 def get_edges(dict):
         key_list = dict.keys()
         list=[]
