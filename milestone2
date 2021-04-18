@@ -1,3 +1,19 @@
+def find_splice(dna_motif, dna):
+    #Function takes in two strings
+    index_list = []
+    list_characters = []
+    for letter in dna_motif:
+        list_characters.append(letter) #Creates a list of letters needed
+    for count in range(len(list_characters)):
+        element = list_characters[count]
+        index = dna.index(element)
+        dna = dna[index:] #Restructure the string to beyond the index that we just checked
+        if count == 0:
+            index_list.append(index) #Index of the first is the normal index
+        else:
+            index_list.append(index + index_list[count-1]) #Index of subsequent strings is influenced by the substring being created
+    return index_list
+    
 def shared_motif(dna_list):
         motif = '' #will add common letters as they are found
         dna_string = dna_list[-1] #last string in dna_list
@@ -38,7 +54,47 @@ def get_edges(dict):
 adjencey_list=get_edges(dict)
 print(adjencey_list)
 
-
+def assemble_genome(dna_list):
+    list_of_possibilities = []
+    shortest_string = []
+    for string in dna_list:
+        go_to_next_string = False
+        if len(dna_list) == 1:
+            shortest_string.append(string)
+            break
+        for i in range(len(string)):
+            if i == 0:
+                shortest_string.append(string[i])
+                continue
+            if i == len(string):
+                shortest_string.append(string[i])
+                break
+            count = 0
+            gone_through_loop = False
+            for element in dna_list:
+                if element == string:
+                    count = count + 1
+                    continue
+                if string[i] == element[0]:
+                    print(string[i:])
+                    if string[i:] in element == True: #########################this is the line, I want to check if a splice is in the section, I thought this line was write but I realised it only works for lists and not strings
+                        shortest_string.append(string[i:])
+                        for j in range(len(dna_list)):
+                            if dna_list[j] == element:
+                                dna_list[j] = dna_list[j][i:]
+                    go_to_next_string = True
+                    dna_list.remove(string)
+                    break
+                count = count + 1
+                if count == 4:
+                    gone_through_loop = True
+            if gone_through_loop == True:
+                shortest_string.append(string[i])
+            if go_to_next_string == True:
+                break
+    shortest_string = "".join(shortest_string)
+    return shortest_string
+    
 import math
 
 def perfect_match(rna): 
