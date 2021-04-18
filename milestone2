@@ -61,7 +61,9 @@ def perfect_match(rna):
     return number_matches
         
     #number of perfect matches is equal to matches_UA! * matches_GC!
-    
+   
+ dna=""
+ gc_content=[]
  def random_genome(dna, gc_content):
     dna = dna.upper()
     cg = len(dna.replace('A', '').replace('T', ''))
