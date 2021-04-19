@@ -2,6 +2,8 @@ def find_splice(dna_motif, dna):
     #Function takes in two strings
     index_list = []
     list_characters = []
+    if len(dna_motif) == 0:
+        return []
     for letter in dna_motif:
         list_characters.append(letter) #Creates a list of letters needed
     for count in range(len(list_characters)):
