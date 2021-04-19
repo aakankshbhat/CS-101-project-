@@ -35,26 +35,33 @@ def shared_motif(dna_list):
 
 #inspiration from https://www.programiz.com/python-programming/methods/built-in/all
 
-dict={}
-def get_edges(dict):
-        key_list = dict.keys()
-        list=[]
-        for i in key_list:
-            list.append(i)
+dictionary={}
+
+def get_edges(dictionary):
+        key_list1 = dictionary.keys()
+        list1=[]
+        for i in key_list1:
+            list1.append(i) #transferring elements from the dictionary to list 1
         list2=[]
-        for i in range(0,len(list)):
-            for j in range(0,len(list)):
+        for i in range(0,len(list1)):
+            for j in range(0,len(list1)):
                 
+                #a string can not be adjacent to itself
                 if i==j:
-                    break
-                if(dict[list[i]][:3]==dict[list[j]][-3:]):
-                    list2.append((list[j],list[i]))  
-                if (dict[list[i]][-3:]==dict[list[j]][:3]):
-                    list2.append((list[i],list[j]))
+                    break  
+                    
+                #if three-character suffix of a string matches with three-character prefix of another string, then append to list2
+                if(dictionary[list1[i]][:3]==dictionary[list1[j]][-3:]):
+                    list2.append((list1[j],list1[i]))  
+                if (dictionary[list1[i]][-3:]==dictionary[list1[j]][:3]):
+                    list2.append((list1[i],list1[j]))
         return list2
 
-adjencey_list=get_edges(dict)
-print(adjencey_list)
+adjacency_list1=get_edges(dictionary)
+print(adjacency_list1)
+
+#inspiration from https://open.oregonstate.education/computationalbiology/chapter/dictionaries/
+
 
 def assemble_genome(dna_list):
     list_of_possibilities = []
