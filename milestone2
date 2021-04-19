@@ -8,12 +8,15 @@ def find_splice(dna_motif, dna):
         list_characters.append(letter) #Creates a list of letters needed
     for count in range(len(list_characters)):
         element = list_characters[count]
-        index = dna.index(element)
-        dna = dna[index:] #Restructure the string to beyond the index that we just checked
-        if count == 0:
-            index_list.append(index) #Index of the first is the normal index
-        else:
-            index_list.append(index + index_list[count-1]) #Index of subsequent strings is influenced by the substring being created
+        try:
+            index = dna.index(element)
+            dna = dna[index:] #Restructure the string to beyond the index that we just checked
+            if count == 0:
+                index_list.append(index) #Index of the first is the normal index
+            else:
+                index_list.append(index + index_list[count-1]) #Index of subsequent strings is influenced by the substring being created
+        except ValueError:
+            return []
     return index_list
     
 def shared_motif(dna_list):
