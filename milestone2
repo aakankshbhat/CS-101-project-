@@ -35,29 +35,30 @@ def shared_motif(dna_list):
 
 #inspiration from https://www.programiz.com/python-programming/methods/built-in/all
 
-dictionary={}
+dna_dict={}
 
-def get_edges(dictionary):
-        key_list1 = dictionary.keys()
+def get_edges(dna_dict):
         list1=[]
-        for i in key_list1:
-            list1.append(i) #transferring elements from the dictionary to list 1
+        element_list1 = dna_dict.keys()
+        for j in element_list1:
+            list1.append(j) #transferring elements from the dictionary to list 1
         list2=[]
-        for i in range(0,len(list1)):
-            for j in range(0,len(list1)):
+        for k in range(0,len(list1)):
+            for l in range(0,len(list1)):
                 
                 #a string can not be adjacent to itself
-                if i==j:
+                if k==l:
                     break  
                     
                 #if three-character suffix of a string matches with three-character prefix of another string, then append to list2
-                if(dictionary[list1[i]][:3]==dictionary[list1[j]][-3:]):
-                    list2.append((list1[j],list1[i]))  
-                if (dictionary[list1[i]][-3:]==dictionary[list1[j]][:3]):
-                    list2.append((list1[i],list1[j]))
+                if (dna_dict[list1[k]][-3:]==dna_dict[list1[l]][:3]):
+                     list2.append((list1[k],list1[l]))
+                if(dna_dict[list1[k]][:3]==dna_dict[list1[l]][-3:]):
+                    list2.append((list1[l],list1[k]))  
+                                      
         return list2
 
-adjacency_list1=get_edges(dictionary)
+adjacency_list1=get_edges(dna_dict)
 print(adjacency_list1)
 
 #inspiration from https://open.oregonstate.education/computationalbiology/chapter/dictionaries/
