@@ -31,13 +31,14 @@ def shared_motif(dna_list):
                     if all(string in index for index in dna_list) == True: #all function returns true if in string in all indices
                         if k > len(motif): #can't be equal to len(motif)
                             motif = string
-                            if all(string in index for index in dna_list) == False: #case with no common substrings
-                                motif = ""
+                        if all(string in index for index in dna_list) == False: #case with no common substrings
+                            motif = ""
         return motif
 
 #inspiration from dynamic programming on wikipedia and algorithms.tutorialhorizon
 
 #inspiration from https://www.programiz.com/python-programming/methods/built-in/all
+
 
 dna_dict={}
 
