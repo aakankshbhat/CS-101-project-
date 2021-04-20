@@ -24,11 +24,11 @@ def shared_motif(dna_list):
         dna_string = dna_list[-1] #last string in dna_list
         dnastring_len = len(dna_list[-1])+1 #add one for inclusivity purposes
         for i in range(dnastring_len): 
-            for k in range((dnastring_len)-(i+1)): #new range taking into account already tested indices
+            for k in range(-((i+1)-dnastring_len)): #new range taking into account already tested indices
                 string = dna_string[i:i+k] # k = change in index value from start to end of shared motif
                 for index in dna_list:
                     if all(string in index for index in dna_list) == True: #all function returns true if in string in all indices
-                        if k > len(motif): #can't be zero
+                        if k >= len(motif): #can't be zero
                             motif = string
                             if all(string in index for index in dna_list) == False: #case with no common substrings
                                 motif = ""
