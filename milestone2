@@ -25,8 +25,10 @@ def shared_motif(dna_list):
         dnastring_len = len(dna_list[-1])+1 #add one for inclusivity purposes
         for i in range(dnastring_len): 
             for k in range((dnastring_len)-i): #new range taking into account already tested indices
-                j = i+k # k = change in index value from start to end of shared motif
-                string = dna_string[i:j] #j represents end index value of motif
+                j = i+k 
+                # k = change in index value from start to end of shared motif
+                #j represents end index value of motif
+                string = dna_string[i:j] 
                 for index in dna_list:
                     if all(string in index for index in dna_list) == True: #all function returns true if in string in all indices
                         if k > len(motif): #can't be equal to len(motif)
@@ -38,6 +40,8 @@ def shared_motif(dna_list):
 #inspiration from dynamic programming on wikipedia and algorithms.tutorialhorizon
 
 #inspiration from https://www.programiz.com/python-programming/methods/built-in/all
+
+
 
 
 dna_dict={}
