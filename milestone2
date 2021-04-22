@@ -10,13 +10,15 @@ def find_splice(dna_motif, dna):
         element = list_characters[count]
         try:
             index = dna.index(element)
-            dna = dna[index:] #Restructure the string to beyond the index that we just checked
+            dna = dna[index+1:] #Restructure the string to beyond the index that we just checked
             if count == 0:
                 index_list.append(index) #Index of the first is the normal index
             else:
-                index_list.append(index + index_list[count-1]) #Index of subsequent strings is influenced by the substring being created
+                index_list.append(index + index_list[count-1] + 1) #Index of subsequent strings is influenced by the substring being created
         except ValueError:
             return []
+    if len(index_list) != len(list_characters):
+        return []
     return index_list
     
 def shared_motif(dna_list):
