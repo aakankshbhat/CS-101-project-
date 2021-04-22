@@ -142,7 +142,7 @@ def assemble_genome(dna_list):
             if go_to_next_string == True:
                 count = 0
                 break
-            if len(shortest_string) > 4*len(string):
+            if len(shortest_string) > 10*len(string):
                 return "Infinite loop"
     shortest_string = "".join(shortest_string)
     return shortest_string
