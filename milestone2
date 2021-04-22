@@ -76,14 +76,23 @@ print(adjacency_list1)
 
 
 def assemble_genome(dna_list):
-    list_of_possibilities = []
     shortest_string = []
-    for string in dna_list:
+    index = 0
+    while index < (len(dna_list)):
+        string = dna_list[index]
         go_to_next_string = False
         if len(dna_list) == 1:
             shortest_string.append(string)
             break
         for i in range(len(string)):
+            if len(string) == 1:
+                if string in shortest_string:
+                    index = index + 1
+                    break
+                else:
+                    shortest_string.append(string)
+                    index = index + 1
+                    break
             if i == 0:
                 shortest_string.append(string[i])
                 continue
@@ -97,21 +106,41 @@ def assemble_genome(dna_list):
                     count = count + 1
                     continue
                 if string[i] == element[0]:
-                    print(string[i:])
-                    if string[i:] in element == True: #########################this is the line, I want to check if a splice is in the section, I thought this line was write but I realised it only works for lists and not strings
-                        shortest_string.append(string[i:])
-                        for j in range(len(dna_list)):
-                            if dna_list[j] == element:
-                                dna_list[j] = dna_list[j][i:]
+                    if string[i:] in element:
+                        shortest_string.append(string[i:-1])
+                        length = len(string[i:])
+                        for j in range(length):
+                            if string[i+j:] in element:
+                                for genome in dna_list:
+                                    if string[i+j:] in genome:
+                                        if len(dna_list) == 2:
+                                            shortest_string.remove(shortest_string[-1])
+                                            break
+                                        else:
+                                            if genome == element:
+                                                continue
+                                            else:
+                                                shortest_string[i] = shortest_string[i][:i+j]
+                                                break
+                                                print(string[i+j:])
+                                if len(dna_list) == 2:
+                                    shortest_string.append(element)
+                                    dna_list.remove(element)
+                                else:
+                                    dna_list.remove(element)
+                            break
                     go_to_next_string = True
                     dna_list.remove(string)
+                    index = 0 #make index 0 so it goes through the whole loop again
                     break
                 count = count + 1
-                if count == 4:
+                if count == len(dna_list):
                     gone_through_loop = True
             if gone_through_loop == True:
                 shortest_string.append(string[i])
+                count = 0
             if go_to_next_string == True:
+                count = 0
                 break
     shortest_string = "".join(shortest_string)
     return shortest_string
